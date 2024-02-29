@@ -40,8 +40,11 @@ This template repository provides a basic setup for implementing Firebase Authen
 - **Repository Name**: [Firebase-Authentication-Template](https://github.com/barandev/Firebase-Authentication-Template)
 
   
-[![GitHub stars](https://img.shields.io/github/stars/barandev/Firebase-Authentication-Template)](https://github.com/barandev/Firebase-Authentication-Template/stargazers)
-[![GitHub forks](https://img.shields.io/github/forks/barandev/Firebase-Authentication-Template)](https://github.com/barandev/Firebase-Authentication-Template/network)
+![GitHub language count](https://img.shields.io/github/languages/count/barandev/Firebase-Authentication-Template)
+![GitHub repo size](https://img.shields.io/github/repo-size/barandev/Firebase-Authentication-Template)
+[![License](https://img.shields.io/github/license/barandev/Tetris-Game-Template)](https://github.com/barandev/Tetris-Game-Template/blob/main/LICENSE)
 [![GitHub issues](https://img.shields.io/github/issues/barandev/Firebase-Authentication-Template)](https://github.com/barandev/Firebase-Authentication-Template/issues)
 [![GitHub pull requests](https://img.shields.io/github/issues-pr/barandev/Firebase-Authentication-Template)](https://github.com/barandev/Firebase-Authentication-Template/pulls)
+[![GitHub stars](https://img.shields.io/github/stars/barandev/Firebase-Authentication-Template)](https://github.com/barandev/Firebase-Authentication-Template/stargazers)
+[![GitHub forks](https://img.shields.io/github/forks/barandev/Firebase-Authentication-Template)](https://github.com/barandev/Firebase-Authentication-Template/network)
 
