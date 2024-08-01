@@ -47,4 +47,3 @@ This template repository provides a basic setup for implementing Firebase Authen
 [![GitHub pull requests](https://img.shields.io/github/issues-pr/barandev/Firebase-Authentication-Template)](https://github.com/barandev/Firebase-Authentication-Template/pulls)
 [![GitHub stars](https://img.shields.io/github/stars/barandev/Firebase-Authentication-Template)](https://github.com/barandev/Firebase-Authentication-Template/stargazers)
 [![GitHub forks](https://img.shields.io/github/forks/barandev/Firebase-Authentication-Template)](https://github.com/barandev/Firebase-Authentication-Template/network)
-### Created With [Lazy.AI](https://www.getlazy.ai)
