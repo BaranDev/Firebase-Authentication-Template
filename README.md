@@ -31,7 +31,7 @@ cd Firebase-Authentication-Template
   - Create a project in [Firebase Console](https://console.firebase.google.com)
   - Enable Email/Password authentication
   - Copy your Firebase configuration
-  - Create `.env` file with your Firebase credentials:
+  - Edit the `.env` file with your Firebase credentials:
 ```env
 FIREBASE_API_KEY=your_api_key
 FIREBASE_AUTH_DOMAIN=your_auth_domain
@@ -42,7 +42,8 @@ FIREBASE_MESSAGING_SENDER_ID=your_messaging_sender_id
 FIREBASE_APP_ID=your_app_id
 FIREBASE_MEASUREMENT_ID=your_measurement_id
 ```
-
+> Don't forget to put `*.env` inside your `.gitignore` file afterwards.
+#
 3. **Install Dependencies**
 ```bash
 pip install -r requirements.txt
