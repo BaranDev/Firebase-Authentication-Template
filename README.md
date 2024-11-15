@@ -1,49 +1,94 @@
 # Firebase Authentication Template
 
-This template repository provides a basic setup for implementing Firebase Authentication with Flask and JavaScript.
+A comprehensive Flask-based template for implementing Firebase Authentication with a modern JavaScript frontend.
 
-## Usage
+## Features
 
-1. **Clone the Repository**: Clone this repository to your local machine.
+- Email/Password authentication
+- Secure password hashing
+- Session management
+- Responsive UI with modals
+- Firebase configuration management
+- User session persistence
+- Error handling
 
-2. **Setup Firebase Project**:
-   - Create a Firebase project on the Firebase console.
-   - Enable Email/Password authentication in the Firebase console.
-   - Retrieve your Firebase config details.
-   - Set up your `.env` file with Firebase config details:
-     ```
-     FIREBASE_API_KEY=your_api_key
-     FIREBASE_AUTH_DOMAIN=your_auth_domain
-     FIREBASE_DATABASE_URL=your_database_url
-     FIREBASE_PROJECT_ID=your_project_id
-     FIREBASE_STORAGE_BUCKET=your_storage_bucket
-     FIREBASE_MESSAGING_SENDER_ID=your_messaging_sender_id
-     FIREBASE_APP_ID=your_app_id
-     FIREBASE_MEASUREMENT_ID=your_measurement_id
-     ```
+## Prerequisites
 
-3. **Install Dependencies**: Run `pip install -r requirements.txt` to install Python dependencies.
+- Python 3.x
+- Node.js (for npm packages)
+- Firebase account
+- Modern web browser
 
-4. **Run the Flask App**: Execute `python main.py` to start the Flask application.
+## Installation
 
-5. **Access the Application**: Navigate to `http://localhost:8080` in your web browser to access the application.
+1. **Clone the Repository**
+```bash
+git clone https://github.com/barandev/Firebase-Authentication-Template.git
+cd Firebase-Authentication-Template
+```
 
-## Customization
+2. **Setup Firebase Project**
+  - Create a project in [Firebase Console](https://console.firebase.google.com)
+  - Enable Email/Password authentication
+  - Copy your Firebase configuration
+  - Create `.env` file with your Firebase credentials:
+```env
+FIREBASE_API_KEY=your_api_key
+FIREBASE_AUTH_DOMAIN=your_auth_domain
+FIREBASE_DATABASE_URL=your_database_url
+FIREBASE_PROJECT_ID=your_project_id
+FIREBASE_STORAGE_BUCKET=your_storage_bucket
+FIREBASE_MESSAGING_SENDER_ID=your_messaging_sender_id
+FIREBASE_APP_ID=your_app_id
+FIREBASE_MEASUREMENT_ID=your_measurement_id
+```
 
-- **HTML Templates**: Customize HTML templates in the `templates` directory according to your application requirements.
-- **JavaScript Logic**: Modify JavaScript files (`signup.js`, `signin.js`, `signout.js`, `signedin.js`) to add additional functionality or customize existing behavior.
-- **Firebase Features**: Extend the functionality by integrating other Firebase features like Firestore, Cloud Messaging, etc.
+3. **Install Dependencies**
+```bash
+pip install -r requirements.txt
+```
 
-## Repository Owner
+4. **Run Application**
+```bash
+python main.py
+```
 
-- **GitHub Username**: [barandev](https://github.com/barandev)
-- **Repository Name**: [Firebase-Authentication-Template](https://github.com/barandev/Firebase-Authentication-Template)
+5. **Access Application**
+- Open browser at `http://localhost:8080`
 
-  
-![GitHub language count](https://img.shields.io/github/languages/count/barandev/Firebase-Authentication-Template)
-![GitHub repo size](https://img.shields.io/github/repo-size/barandev/Firebase-Authentication-Template)
-[![License](https://img.shields.io/github/license/barandev/Firebase-Authentication-Template)](https://github.com/barandev/Firebase-Authentication-Template/blob/main/LICENSE)
-[![GitHub issues](https://img.shields.io/github/issues/barandev/Firebase-Authentication-Template)](https://github.com/barandev/Firebase-Authentication-Template/issues)
-[![GitHub pull requests](https://img.shields.io/github/issues-pr/barandev/Firebase-Authentication-Template)](https://github.com/barandev/Firebase-Authentication-Template/pulls)
-[![GitHub stars](https://img.shields.io/github/stars/barandev/Firebase-Authentication-Template)](https://github.com/barandev/Firebase-Authentication-Template/stargazers)
-[![GitHub forks](https://img.shields.io/github/forks/barandev/Firebase-Authentication-Template)](https://github.com/barandev/Firebase-Authentication-Template/network)
+## Customization Guide
+
+### Frontend
+- Modify HTML templates in `/templates`
+- Update styles in `/static/css/style.css`
+- Customize JavaScript logic in `/static/js`
+
+### Backend
+- Edit route handlers in `main.py`
+- Add new Flask routes as needed
+- Implement additional security measures
+
+### Firebase Features
+- Add Firestore integration
+- Implement Cloud Messaging
+- Enable other Firebase services
+
+## Security Considerations
+
+- Environment variables for sensitive data
+- Password hashing implementation
+- Session management
+- CSRF protection
+- Secure authentication flow
+
+## Contributing
+
+1. Fork the repository
+2. Create feature branch
+3. Commit changes
+4. Push to branch
+5. Create Pull Request
+
+![GitHub release (latest by date)](https://img.shields.io/github/v/release/barandev/Firebase-Authentication-Template?style=for-the-badge)
+![GitHub License](https://img.shields.io/github/license/barandev/Firebase-Authentication-Template?style=for-the-badge)
+![GitHub last commit](https://img.shields.io/github/last-commit/barandev/Firebase-Authentication-Template?style=for-the-badge)
