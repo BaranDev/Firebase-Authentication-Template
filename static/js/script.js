@@ -1,11 +1,28 @@
-async function hashPassword(password) {
-  const encoder = new TextEncoder();
-  const data = encoder.encode(password);
-  const hash = await crypto.subtle.digest("SHA-256", data);
-  const hashArray = Array.from(new Uint8Array(hash))
-    .map((b) => b.toString(16).padStart(2, "0"))
-    .join("");
-  return hashArray;
-}
+/*
+ * utils.js | Shared Utilities
+ * ============================
+ * Add any shared helper functions here that are used across
+ * multiple pages (signin.js, signup.js, etc.).
+ *
+ * Examples of things you might add:
+ *   - Form validation helpers
+ *   - Toast/notification display functions
+ *   - API request wrappers
+ *   - Date/time formatting
+ */
 
-export { hashPassword };
+// Example: Show a user-friendly error toast instead of alert()
+// function showToast(message, type = "error") {
+//   const toast = document.createElement("div");
+//   toast.className = `toast toast-${type}`;
+//   toast.textContent = message;
+//   document.body.appendChild(toast);
+//   setTimeout(() => toast.remove(), 4000);
+// }
+
+// Example: Validate email format before sending to Firebase
+// function isValidEmail(email) {
+//   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+// }
+
+// export { showToast, isValidEmail };

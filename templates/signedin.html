@@ -1,60 +1,63 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Welcome, User</title>
-    <style>
-        /* Add your custom CSS styles here */
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 20px;
-            background-color: #f0f0f0;
-        }
-        .container {
-            max-width: 600px;
-            margin: 0 auto;
-            background-color: #fff;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-        h1 {
-            color: #333;
-            text-align: center;
-        }
-        .user-info {
-            margin-top: 20px;
-            border-top: 1px solid #ccc;
-            padding-top: 20px;
-        }
-        .user-info p {
-            margin: 10px 0;
-        }
-        .signout-button {
-            display: block;
-            width: 100%;
-            padding: 10px;
-            margin-top: 20px;
-            background-color: #f00;
-            color: #fff;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-        }
-    </style>
-</head>
-<body>
-    <div class="container">
-        <h1>Welcome</h1>
-        <div class="user-info">
-            <p><strong>User ID:</strong> {{ user.uid }}</p>
-            <p><strong>Email:</strong> {{ user.email }}</p>
-            <p style="position: relative; left: 200px;"><strong>*More info can be added here*</strong></p>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/static/css/style.css" />
+    <title>Dashboard</title>
+  </head>
+  <body>
+    <nav class="top-nav">
+      <div class="brand"><span>firebase</span>auth</div>
+      <div class="nav-actions">
+        <span class="btn-text" style="cursor: default; color: var(--text-dim)"
+          >{{ user.email }}</span
+        >
+      </div>
+    </nav>
+
+    <main class="page-center">
+      <div class="container">
+        <div class="modal-header">
+          <h2>Dashboard</h2>
         </div>
+
+        <p>You are signed in. This is a protected route.</p>
+
+        <div class="user-info">
+          <p><strong>UID</strong> <span class="mono">{{ user.uid }}</span></p>
+          <p><strong>Email</strong> {{ user.email }}</p>
+        </div>
+
+        <p class="hint">
+          Customize this page to build your app. Add profile settings, data
+          views, or anything you need.
+        </p>
+
         <button class="signout-button" id="signout-button">Sign Out</button>
+      </div>
+    </main>
+
+    <div class="bottom-bar">
+      <span
+        >Built by
+        <a href="https://github.com/barandev" target="_blank">BaranDev</a></span
+      >
+      <div class="bottom-links">
+        <a
+          href="https://github.com/barandev/Firebase-Authentication-Template"
+          target="_blank"
+          >GitHub</a
+        >
+      </div>
     </div>
+
     <script src="/static/js/signout.js" type="module"></script>
-</body>
+  </body>
 </html>

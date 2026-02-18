@@ -1,130 +1,494 @@
-.title {
-  position: fixed;
-  top: 0;
+/*
+ * style.css | Global Styles
+ * ==========================
+ * Design inspired by modern dark editorial layouts.
+ * Dark navy base, teal/cyan accents, outlined buttons, spacious typography.
+ *
+ * Color reference:
+ *   --bg:      #0a1628   (deep navy)
+ *   --accent:  #14b8a6   (teal)
+ *   --surface: #0d2137   (card/modal bg)
+ *
+ * Structure:
+ *   1. Variables & Reset
+ *   2. Body & Background
+ *   3. Typography
+ *   4. Top Navbar
+ *   5. Hero / Title
+ *   6. Bottom Bar (attribution)
+ *   7. Modals
+ *   8. Form Elements
+ *   9. Standalone Pages (container)
+ *  10. Dashboard (signed-in)
+ *  11. Animations & Responsive
+ */
+
+/* ──────────────────────────────────────────────
+   1. Variables & Reset
+   ────────────────────────────────────────────── */
+:root {
+  --bg: #0a1628;
+  --bg-lighter: #0d2137;
+  --accent: #14b8a6;
+  --accent-dim: rgba(20, 184, 166, 0.15);
+  --accent-glow: rgba(20, 184, 166, 0.3);
+  --text: #e2e8f0;
+  --text-dim: #7e95aa;
+  --border: rgba(255, 255, 255, 0.08);
+  --border-accent: rgba(20, 184, 166, 0.4);
+  --radius: 4px;
+  --font: "Inter", "Segoe UI", system-ui, -apple-system, sans-serif;
 }
 
-.title h1 {
-  font-size: 2rem;
-  font-weight: 700;
-  margin-bottom: 25%;
-  color: #789b8a;
-  top: 0;
-}
-
-body {
-  font-family: Arial, sans-serif;
-  background-color: #f2f2f2;
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  text-align: center;
-  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' version='1.1' xmlns:xlink='http://www.w3.org/1999/xlink' xmlns:svgjs='http://svgjs.dev/svgjs' width='1280' height='720' preserveAspectRatio='none' viewBox='0 0 1280 720'%3e%3cg mask='url(%26quot%3b%23SvgjsMask1100%26quot%3b)' fill='none'%3e%3crect width='1280' height='720' x='0' y='0' fill='url(%26quot%3b%23SvgjsLinearGradient1101%26quot%3b)'%3e%3c/rect%3e%3cpath d='M603.334%2c252.81C634.817%2c253.802%2c661.289%2c232.186%2c677.547%2c205.207C694.436%2c177.181%2c702.355%2c142.955%2c686.925%2c114.099C670.713%2c83.78%2c637.701%2c65.438%2c603.334%2c66.417C570.483%2c67.353%2c542.192%2c89.189%2c527.608%2c118.64C514.505%2c145.1%2c522.288%2c175.059%2c536.801%2c200.773C551.634%2c227.053%2c573.172%2c251.86%2c603.334%2c252.81' fill='rgba(9%2c 56%2c 54%2c 0.53)' class='triangle-float1'%3e%3c/path%3e%3cpath d='M71.171%2c604.907C126.86%2c603.998%2c179.035%2c575.319%2c205.945%2c526.556C232.021%2c479.305%2c225.34%2c422.046%2c197.648%2c375.723C170.729%2c330.692%2c123.554%2c298.193%2c71.171%2c301.102C22.627%2c303.798%2c-7.486%2c347.219%2c-33.109%2c388.538C-60.901%2c433.355%2c-94.338%2c483.576%2c-71.442%2c531.082C-46.533%2c582.766%2c13.806%2c605.843%2c71.171%2c604.907' fill='rgba(9%2c 56%2c 54%2c 0.53)' class='triangle-float2'%3e%3c/path%3e%3cpath d='M613.704%2c496.474C647.141%2c498.632%2c678.014%2c476.414%2c693.049%2c446.47C706.79%2c419.104%2c697.903%2c387.374%2c681.452%2c361.546C666.386%2c337.893%2c641.748%2c321.748%2c613.704%2c321.9C585.914%2c322.051%2c560.6%2c337.919%2c547.217%2c362.274C534.304%2c385.773%2c538.409%2c413.234%2c550.312%2c437.26C564.07%2c465.03%2c582.777%2c494.478%2c613.704%2c496.474' fill='rgba(9%2c 56%2c 54%2c 0.53)' class='triangle-float3'%3e%3c/path%3e%3cpath d='M144.759%2c780.085C214.607%2c778.938%2c277.71%2c741.967%2c314.109%2c682.342C352.222%2c619.909%2c364.47%2c542.166%2c329.081%2c478.15C292.656%2c412.259%2c219.955%2c372.26%2c144.759%2c375.997C74.997%2c379.464%2c24.448%2c434.453%2c-10.344%2c495.019C-44.967%2c555.29%2c-67.731%2c627.013%2c-34.511%2c688.069C-0.104%2c751.306%2c72.778%2c781.267%2c144.759%2c780.085' fill='rgba(9%2c 56%2c 54%2c 0.53)' class='triangle-float3'%3e%3c/path%3e%3cpath d='M888.253%2c416.832C925.307%2c416.775%2c953.874%2c388.614%2c972.799%2c356.757C992.244%2c324.025%2c1004.119%2c284.96%2c986.704%2c251.104C967.971%2c214.686%2c929.096%2c189.388%2c888.253%2c192.393C851.009%2c195.133%2c829.191%2c230.771%2c812.058%2c263.954C796.736%2c293.629%2c788.358%2c327.128%2c803.255%2c357.018C819.818%2c390.251%2c851.121%2c416.889%2c888.253%2c416.832' fill='rgba(9%2c 56%2c 54%2c 0.53)' class='triangle-float3'%3e%3c/path%3e%3cpath d='M811.943%2c168.98C854.859%2c167.539%2c892.104%2c140.085%2c911.636%2c101.844C929.529%2c66.812%2c921.094%2c26.676%2c902.267%2c-7.863C882.389%2c-44.329%2c853.427%2c-79.041%2c811.943%2c-81.044C767.571%2c-83.186%2c727.694%2c-55.649%2c705.134%2c-17.38C682.194%2c21.534%2c677.479%2c69.758%2c699.941%2c108.95C722.516%2c148.338%2c766.57%2c170.503%2c811.943%2c168.98' fill='rgba(9%2c 56%2c 54%2c 0.53)' class='triangle-float2'%3e%3c/path%3e%3c/g%3e%3cdefs%3e%3cmask id='SvgjsMask1100'%3e%3crect width='1280' height='720' fill='white'%3e%3c/rect%3e%3c/mask%3e%3clinearGradient x1='10.94%25' y1='-19.44%25' x2='89.06%25' y2='119.44%25' gradientUnits='userSpaceOnUse' id='SvgjsLinearGradient1101'%3e%3cstop stop-color='rgba(32%2c 32%2c 40%2c 1)' offset='0.29'%3e%3c/stop%3e%3cstop stop-color='rgba(21%2c 57%2c 55%2c 1)' offset='1'%3e%3c/stop%3e%3c/linearGradient%3e%3cstyle%3e %40keyframes float1 %7b 0%25%7btransform: translate(0%2c 0)%7d 50%25%7btransform: translate(-10px%2c 0)%7d 100%25%7btransform: translate(0%2c 0)%7d %7d .triangle-float1 %7b animation: float1 5s infinite%3b %7d %40keyframes float2 %7b 0%25%7btransform: translate(0%2c 0)%7d 50%25%7btransform: translate(-5px%2c -5px)%7d 100%25%7btransform: translate(0%2c 0)%7d %7d .triangle-float2 %7b animation: float2 4s infinite%3b %7d %40keyframes float3 %7b 0%25%7btransform: translate(0%2c 0)%7d 50%25%7btransform: translate(0%2c -10px)%7d 100%25%7btransform: translate(0%2c 0)%7d %7d .triangle-float3 %7b animation: float3 6s infinite%3b %7d %3c/style%3e%3c/defs%3e%3c/svg%3e");
-  background-size: cover;
-}
-.container {
-  max-width: 400px;
-  padding: 20px;
-  background-color: #fff;
-  border-radius: 8px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-h1 {
-  color: #333;
-}
-p {
-  color: #666;
-}
-a {
-  text-decoration: none;
-  color: #007bff;
-  font-size: 16px;
-  transition: color 0.3s;
-}
-a:hover {
-  color: #0056b3;
 }
 
-.navbar {
-  position: fixed;
-  bottom: 20px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 30%;
-  padding: 10px;
-  background-color: #16151a;
-  border-radius: 25px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+/* ──────────────────────────────────────────────
+   2. Body & Background
+   ────────────────────────────────────────────── */
+body {
+  font-family: var(--font);
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
   display: flex;
-  justify-content: space-evenly;
+  flex-direction: column;
+  overflow-x: hidden;
+
+  /* Subtle gradient matching the reference teal-to-navy feel */
+  background:
+    radial-gradient(
+      ellipse 80% 60% at 50% 100%,
+      rgba(13, 78, 72, 0.35) 0%,
+      transparent 70%
+    ),
+    radial-gradient(
+      ellipse 60% 50% at 80% 20%,
+      rgba(13, 78, 72, 0.2) 0%,
+      transparent 60%
+    ),
+    var(--bg);
 }
-.navbar a {
-  color: white;
-  font-size: 16px;
+
+/* ──────────────────────────────────────────────
+   3. Typography
+   ────────────────────────────────────────────── */
+h1,
+h2,
+h3 {
+  color: #fff;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
 }
-.modal {
-  display: none;
+
+p {
+  color: var(--text-dim);
+  line-height: 1.7;
+  font-size: 0.95rem;
+}
+
+a {
+  color: var(--accent);
+  text-decoration: none;
+  transition: opacity 0.2s;
+}
+
+a:hover {
+  opacity: 0.8;
+}
+
+/* ──────────────────────────────────────────────
+   4. Top Navbar
+   ────────────────────────────────────────────── */
+.top-nav {
   position: fixed;
   top: 0;
   left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
-  justify-content: center;
+  right: 0;
+  z-index: 50;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.25rem 2.5rem;
+}
+
+.brand {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: -0.03em;
+}
+
+.brand span {
+  color: var(--accent);
+}
+
+.nav-actions {
+  display: flex;
+  gap: 1rem;
   align-items: center;
 }
-.modal-content {
-  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' version='1.1' xmlns:xlink='http://www.w3.org/1999/xlink' xmlns:svgjs='http://svgjs.dev/svgjs' width='1440' height='560' preserveAspectRatio='none' viewBox='0 0 1440 560'%3e%3cg mask='url(%26quot%3b%23SvgjsMask1010%26quot%3b)' fill='none'%3e%3crect width='1440' height='560' x='0' y='0' fill='url(%26quot%3b%23SvgjsLinearGradient1011%26quot%3b)'%3e%3c/rect%3e%3cpath d='M1440 0L940.4 0L1440 176.7z' fill='rgba(255%2c 255%2c 255%2c .1)'%3e%3c/path%3e%3cpath d='M940.4 0L1440 176.7L1440 342.73L703.3399999999999 0z' fill='rgba(255%2c 255%2c 255%2c .075)'%3e%3c/path%3e%3cpath d='M703.3399999999999 0L1440 342.73L1440 460.67L417.94999999999993 0z' fill='rgba(255%2c 255%2c 255%2c .05)'%3e%3c/path%3e%3cpath d='M417.94999999999993 0L1440 460.67L1440 494.33000000000004L212.50999999999993 0z' fill='rgba(255%2c 255%2c 255%2c .025)'%3e%3c/path%3e%3cpath d='M0 560L389.13 560L0 357.2z' fill='rgba(0%2c 0%2c 0%2c .1)'%3e%3c/path%3e%3cpath d='M0 357.2L389.13 560L516.81 560L0 161.89999999999998z' fill='rgba(0%2c 0%2c 0%2c .075)'%3e%3c/path%3e%3cpath d='M0 161.89999999999998L516.81 560L863.55 560L0 144.34999999999997z' fill='rgba(0%2c 0%2c 0%2c .05)'%3e%3c/path%3e%3cpath d='M0 144.34999999999997L863.55 560L1016.63 560L0 92.07999999999996z' fill='rgba(0%2c 0%2c 0%2c .025)'%3e%3c/path%3e%3c/g%3e%3cdefs%3e%3cmask id='SvgjsMask1010'%3e%3crect width='1440' height='560' fill='white'%3e%3c/rect%3e%3c/mask%3e%3clinearGradient x1='15.28%25' y1='-39.29%25' x2='84.72%25' y2='139.29%25' gradientUnits='userSpaceOnUse' id='SvgjsLinearGradient1011'%3e%3cstop stop-color='rgba(32%2c 32%2c 40%2c 1)' offset='0'%3e%3c/stop%3e%3cstop stop-color='rgba(21%2c 57%2c 55%2c 1)' offset='1'%3e%3c/stop%3e%3c/linearGradient%3e%3c/defs%3e%3c/svg%3e");
-  background-size: cover;
-  padding: 2rem;
-  border-radius: 8px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  width: 20%;
-}
-.navbar-button {
-  padding: 10px;
-  border-radius: 15px;
+
+/* Ghost / outlined button style from the reference */
+.btn-outline {
+  display: inline-block;
+  padding: 0.5rem 1.75rem;
+  border: 1px solid var(--border-accent);
+  border-radius: var(--radius);
+  color: #fff;
+  font-size: 0.875rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
   cursor: pointer;
-  border: 1px solid rgb(255, 255, 255, 0.2);
-  padding-inline: 15%;
+  background: transparent;
+  transition: all 0.25s ease;
+  text-decoration: none;
 }
-.navbar-button:hover {
-  background-color: rgb(255, 255, 255, 0.1);
+
+.btn-outline:hover {
+  background: var(--accent-dim);
+  border-color: var(--accent);
+  opacity: 1;
 }
-.modal-input {
-  padding-top: 0.5rem;
-  padding-bottom: 0.5rem;
-  border-radius: 0.25rem;
-  border-width: 1px;
-  max-width: 50%;
+
+.btn-text {
+  color: var(--text-dim);
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: color 0.2s;
+  text-decoration: none;
+}
+
+.btn-text:hover {
+  color: #fff;
+  opacity: 1;
+}
+
+/* ──────────────────────────────────────────────
+   5. Hero / Title (Home page)
+   ────────────────────────────────────────────── */
+.hero {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 6rem 2rem 4rem;
+}
+
+.hero .eyebrow {
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--accent);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  margin-bottom: 1.25rem;
+}
+
+.hero h1 {
+  font-size: clamp(2.5rem, 6vw, 4.5rem);
+  margin-bottom: 1.5rem;
+  max-width: 700px;
+}
+
+.hero p {
+  max-width: 520px;
+  margin-bottom: 2.5rem;
+  font-size: 1.05rem;
+}
+
+/* ──────────────────────────────────────────────
+   6. Bottom Bar (Attribution / Footer)
+   ────────────────────────────────────────────── */
+.bottom-bar {
+  border-top: 1px solid var(--border);
+  padding: 1.25rem 2.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.8rem;
+  color: var(--text-dim);
+}
+
+.bottom-bar a {
+  color: var(--text-dim);
+  transition: color 0.2s;
+}
+
+.bottom-bar a:hover {
+  color: var(--accent);
+  opacity: 1;
+}
+
+.bottom-links {
+  display: flex;
+  gap: 1.5rem;
+}
+
+/* ──────────────────────────────────────────────
+   7. Modals
+   ────────────────────────────────────────────── */
+.modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(5, 10, 20, 0.75);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  justify-content: center;
+  align-items: center;
+  z-index: 100;
+}
+
+.modal-content,
+.container {
+  background: var(--bg-lighter);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 2.5rem;
   width: 100%;
-  color: #ffffff;
-  color: #374151;
-  appearance: none;
-  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+  max-width: 400px;
+  position: relative;
 }
-.modal-button {
-  padding-top: 0.5rem;
-  padding-bottom: 0.5rem;
-  padding-left: 1rem;
-  padding-right: 1rem;
-  border-radius: 0.25rem;
-  font-weight: 700;
-  color: #ffffff;
-  background-color: #8a5cf644;
+
+/* Subtle teal glow at the top edge */
+.modal-content::before,
+.container::before {
+  content: "";
+  position: absolute;
+  top: -1px;
+  left: 20%;
+  right: 20%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--accent), transparent);
 }
-.modal-button:hover {
-  :hover {
-    background-color: #6d28d9;
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.modal-header h2 {
+  font-size: 1.35rem;
+  font-weight: 600;
+}
+
+.close-button {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  color: var(--text-dim);
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.close-button:hover {
+  border-color: var(--accent);
+  color: #fff;
+}
+
+/* ──────────────────────────────────────────────
+   8. Form Elements
+   ────────────────────────────────────────────── */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.form-group {
+  text-align: left;
+}
+
+label {
+  display: block;
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--text-dim);
+  margin-bottom: 0.5rem;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+}
+
+input[type="email"],
+input[type="password"],
+input[type="text"] {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  background: rgba(0, 0, 0, 0.25);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  color: var(--text);
+  font-family: var(--font);
+  font-size: 0.95rem;
+  outline: none;
+  transition:
+    border-color 0.2s,
+    box-shadow 0.2s;
+}
+
+input:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-dim);
+}
+
+input::placeholder {
+  color: rgba(126, 149, 170, 0.5);
+}
+
+/* Primary action button (submit) */
+button[type="submit"] {
+  width: 100%;
+  padding: 0.8rem;
+  margin-top: 0.5rem;
+  background: var(--accent);
+  color: var(--bg);
+  border: none;
+  border-radius: var(--radius);
+  font-family: var(--font);
+  font-size: 0.9rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+button[type="submit"]:hover {
+  filter: brightness(1.1);
+  box-shadow: 0 4px 20px var(--accent-glow);
+}
+
+/* ──────────────────────────────────────────────
+   9. Standalone Pages
+   ────────────────────────────────────────────── */
+.page-center {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+}
+
+.container .back-link {
+  display: block;
+  margin-top: 1.5rem;
+  text-align: center;
+  font-size: 0.85rem;
+  color: var(--text-dim);
+}
+
+.container .back-link:hover {
+  color: var(--accent);
+}
+
+/* ──────────────────────────────────────────────
+   10. Dashboard (signed-in page)
+   ────────────────────────────────────────────── */
+.user-info {
+  background: rgba(0, 0, 0, 0.2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.25rem;
+  margin-top: 1.5rem;
+}
+
+.user-info p {
+  margin: 0.4rem 0;
+  font-size: 0.9rem;
+  display: flex;
+  gap: 0.5rem;
+}
+
+.user-info strong {
+  color: var(--text);
+  min-width: 50px;
+}
+
+.user-info .mono {
+  font-family: "SF Mono", "Fira Code", "Consolas", monospace;
+  font-size: 0.85rem;
+  color: var(--text-dim);
+}
+
+.hint {
+  color: var(--text-dim);
+  font-size: 0.85rem;
+  font-style: italic;
+  margin-top: 1rem;
+}
+
+.signout-button {
+  width: 100%;
+  padding: 0.8rem;
+  margin-top: 1.5rem;
+  background: transparent;
+  color: #f87171;
+  border: 1px solid rgba(248, 113, 113, 0.25);
+  border-radius: var(--radius);
+  font-family: var(--font);
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.signout-button:hover {
+  background: rgba(248, 113, 113, 0.1);
+  border-color: rgba(248, 113, 113, 0.4);
+}
+
+/* ──────────────────────────────────────────────
+   11. Animations & Responsive
+   ────────────────────────────────────────────── */
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
-.close-button {
-  background: transparent;
-  background-color: transparent;
-  border: none;
-  color: #232323;
-  font-size: 20px;
-  cursor: pointer;
+
+.hero {
+  animation: fadeUp 0.6s ease-out;
+}
+.modal-content {
+  animation: fadeUp 0.25s ease-out;
+}
+
+@media (max-width: 640px) {
+  .top-nav {
+    padding: 1rem 1.25rem;
+  }
+  .hero h1 {
+    font-size: 2rem;
+  }
+  .bottom-bar {
+    flex-direction: column;
+    gap: 0.75rem;
+    text-align: center;
+  }
+  .modal-content,
+  .container {
+    padding: 1.75rem;
+    margin: 1rem;
+  }
 }

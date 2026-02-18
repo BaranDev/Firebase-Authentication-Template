@@ -1,40 +1,69 @@
+/*
+ * signup.js | Sign-Up Logic
+ * ==========================
+ * Handles email/password account creation using Firebase Auth.
+ * On success, stores minimal user data in the Flask session
+ * and redirects to the signed-in page.
+ *
+ * This script is loaded by both template.html (modal) and signup.html (standalone).
+ * Both pages use the same element IDs: #signup-email, #signup-password, #signup-form.
+ */
+
 import { auth } from "./firebase-config.js";
 import { createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
-import { hashPassword } from "./script.js";
 
-// Assuming this code is executed after the form submission
+// ──────────────────────────────────────────────
+// Sign-Up Form Handler
+// ──────────────────────────────────────────────
 document.getElementById("signup-form").addEventListener("submit", async (e) => {
-  e.preventDefault(); // Prevent form submission
+  e.preventDefault();
 
-  // Get email and password from the form
   const email = document.getElementById("signup-email").value;
-  let password = await hashPassword(
-    document.getElementById("signup-password").value
-  );
-  console.log("hashed password: ", password);
+  const password = document.getElementById("signup-password").value;
+
+  // NOTE: Firebase Auth handles password hashing server-side.
+  // Never hash passwords on the client because it breaks password reset
+  // and adds no security since the hash just becomes the password.
+
   try {
     const userCredential = await createUserWithEmailAndPassword(
       auth,
       email,
-      password
+      password,
     );
     const user = userCredential.user;
-    alert("User created: " + user.email);
 
-    // Make a POST request to store user data in session
+    // Store minimal user data in the Flask server-side session
     await fetch("/set_session", {
       method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(user),
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        uid: user.uid,
+        email: user.email,
+      }),
     });
 
-    // Redirect to Flask route
+    // Redirect to the signed-in dashboard
     window.location.href = "/signedin";
   } catch (error) {
-    const errorCode = error.code;
-    const errorMessage = error.message;
-    console.error("Error creating user:", errorMessage + " " + errorCode);
+    // ──────────────────────────────────────────
+    // Customize error messages here.
+    // Full list of Firebase Auth error codes:
+    // https://firebase.google.com/docs/auth/admin/errors
+    // ──────────────────────────────────────────
+    switch (error.code) {
+      case "auth/email-already-in-use":
+        alert("An account with this email already exists.");
+        break;
+      case "auth/weak-password":
+        alert("Password is too weak. Use at least 6 characters.");
+        break;
+      case "auth/invalid-email":
+        alert("Please enter a valid email address.");
+        break;
+      default:
+        alert("Sign-up failed: " + error.message);
+        console.error("Sign-up error:", error.code);
+    }
   }
 });

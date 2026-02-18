@@ -1,89 +1,69 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/static/css/style.css" />
     <title>Sign Up</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f2f2f2;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-        }
+  </head>
+  <body>
+    <nav class="top-nav">
+      <a href="/" class="brand"><span>firebase</span>auth</a>
+      <div class="nav-actions">
+        <a href="/signin" class="btn-text">Already have an account?</a>
+      </div>
+    </nav>
 
-        .container {
-            max-width: 400px;
-            padding: 20px;
-            background-color: #fff;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-
-        h1 {
-            text-align: center;
-            color: #333;
-        }
-
-        form {
-            margin-top: 20px;
-        }
-
-        input[type="email"],
-        input[type="password"] {
-            width: 100%;
-            padding: 10px;
-            margin-bottom: 10px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            box-sizing: border-box;
-            font-size: 16px;
-        }
-
-        button[type="submit"] {
-            width: 100%;
-            padding: 10px;
-            background-color: #007bff;
-            color: #fff;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            font-size: 16px;
-            transition: background-color 0.3s;
-        }
-
-        button[type="submit"]:hover {
-            background-color: #0056b3;
-        }
-
-        a {
-            display: block;
-            text-align: center;
-            margin-top: 20px;
-            text-decoration: none;
-            color: #007bff;
-            font-size: 14px;
-        }
-
-        a:hover {
-            text-decoration: underline;
-        }
-    </style>
-</head>
-<body>
-    <div class="container">
-        <h1>Sign Up</h1>
+    <main class="page-center">
+      <div class="container">
+        <div class="modal-header">
+          <h2>Create Account</h2>
+        </div>
         <form id="signup-form">
-            <input type="email" id="user-email" placeholder="Email" required>
-            <input type="password" id="user-password" placeholder="Password" required>
-            <button type="submit">Sign Up</button>
+          <div class="form-group">
+            <label for="signup-email">Email</label>
+            <input
+              type="email"
+              id="signup-email"
+              placeholder="you@example.com"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="signup-password">Password</label>
+            <input
+              type="password"
+              id="signup-password"
+              placeholder="Min. 6 characters"
+              required
+            />
+          </div>
+          <button type="submit">Sign Up</button>
         </form>
-        <a href="/">Go Back</a>
+        <a href="/" class="back-link">Back to home</a>
+      </div>
+    </main>
+
+    <div class="bottom-bar">
+      <span
+        >Built by
+        <a href="https://github.com/barandev" target="_blank">BaranDev</a></span
+      >
+      <div class="bottom-links">
+        <a
+          href="https://github.com/barandev/Firebase-Authentication-Template"
+          target="_blank"
+          >GitHub</a
+        >
+      </div>
     </div>
+
     <script src="/static/js/signup.js" type="module"></script>
-</body>
+  </body>
 </html>

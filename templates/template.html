@@ -1,96 +1,127 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="/static/css/style.css" />
-    <title>Firebase Authentication</title>
+    <title>Firebase Auth Template</title>
   </head>
   <body>
-    <div class="title">
-      <h1>Firebase Authentication Template</h1>
-    </div>
-    <div class="navbar">
-      <a href="#" onclick="openModal('signin-modal')" class="navbar-button"
-        >Sign In</a
-      >
-      <a href="#" onclick="openModal('signup-modal')" class="navbar-button"
-        >Sign Up</a
-      >
-    </div>
+    <!-- Top Navigation -->
+    <nav class="top-nav">
+      <div class="brand"><span>firebase</span>auth</div>
+      <div class="nav-actions">
+        <a href="#" onclick="openModal('signin-modal')" class="btn-text"
+          >Sign In</a
+        >
+        <a href="#" onclick="openModal('signup-modal')" class="btn-outline"
+          >Sign Up</a
+        >
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <main class="hero">
+      <span class="eyebrow">Open Source Template</span>
+      <h1>Firebase Authentication,<br />Ready to Go</h1>
+      <p>
+        A clean, production-ready auth starter built with Flask and vanilla JS.
+        Clone it, plug in your Firebase credentials, and start building.
+      </p>
+    </main>
+
+    <!-- Sign-In Modal -->
     <div id="signin-modal" class="modal">
       <div class="modal-content">
-        <div style="width: 100%; display: flex; justify-content: end; gap: 30%">
+        <div class="modal-header">
           <h2>Sign In</h2>
           <button class="close-button" onclick="closeModal('signin-modal')">
-            X
+            &times;
           </button>
         </div>
         <form id="signin-form">
-          <div
-            style="
-              display: grid;
-              grid-template-columns: 1fr;
-              row-gap: 1rem;
-              justify-items: center;
-            "
-          >
+          <div class="form-group">
+            <label for="signin-email">Email</label>
             <input
               type="email"
               id="signin-email"
-              placeholder="Email"
-              class="modal-input"
+              placeholder="you@example.com"
               required
             />
+          </div>
+          <div class="form-group">
+            <label for="signin-password">Password</label>
             <input
               type="password"
               id="signin-password"
-              placeholder="Password"
-              class="modal-input"
+              placeholder="Your password"
               required
             />
-            <button type="submit" class="modal-button">Sign In</button>
           </div>
+          <button type="submit">Sign In</button>
         </form>
       </div>
     </div>
 
+    <!-- Sign-Up Modal -->
     <div id="signup-modal" class="modal">
       <div class="modal-content">
-        <div style="width: 100%; display: flex; justify-content: end; gap: 30%">
-          <h2>Sign Up</h2>
+        <div class="modal-header">
+          <h2>Create Account</h2>
           <button class="close-button" onclick="closeModal('signup-modal')">
-            X
+            &times;
           </button>
         </div>
         <form id="signup-form">
-          <div
-            style="
-              display: grid;
-              grid-template-columns: 1fr;
-              row-gap: 1rem;
-              justify-items: center;
-            "
-          >
+          <div class="form-group">
+            <label for="signup-email">Email</label>
             <input
               type="email"
               id="signup-email"
-              placeholder="Email"
-              class="modal-input"
+              placeholder="you@example.com"
               required
             />
+          </div>
+          <div class="form-group">
+            <label for="signup-password">Password</label>
             <input
               type="password"
               id="signup-password"
-              placeholder="Password"
-              class="modal-input"
+              placeholder="Min. 6 characters"
               required
             />
-            <button type="submit" class="modal-button">Sign Up</button>
           </div>
+          <button type="submit">Sign Up</button>
         </form>
       </div>
     </div>
+
+    <!-- Bottom Attribution Bar -->
+    <div class="bottom-bar">
+      <span
+        >Built by
+        <a href="https://github.com/barandev" target="_blank">BaranDev</a></span
+      >
+      <div class="bottom-links">
+        <a
+          href="https://github.com/barandev/Firebase-Authentication-Template"
+          target="_blank"
+          >GitHub</a
+        >
+        <a
+          href="https://github.com/barandev/Firebase-Authentication-Template#readme"
+          target="_blank"
+          >Docs</a
+        >
+      </div>
+    </div>
+
     <script>
       function openModal(id) {
         document.getElementById(id).style.display = "flex";
@@ -100,7 +131,14 @@
         document.getElementById("signup-form").reset();
         document.getElementById("signin-form").reset();
       }
+      // Close modal when clicking outside the content
+      document.querySelectorAll(".modal").forEach((modal) => {
+        modal.addEventListener("click", (e) => {
+          if (e.target === modal) closeModal(modal.id);
+        });
+      });
     </script>
+
     <script src="/static/js/signup.js" type="module"></script>
     <script src="/static/js/signin.js" type="module"></script>
   </body>
