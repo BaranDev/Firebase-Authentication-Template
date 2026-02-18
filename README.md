@@ -2,10 +2,6 @@
 
 A Flask + vanilla JS template for adding user sign-up, sign-in, and session management to a web app using Firebase Auth. No frameworks, no build tools. Just HTML, CSS, and JavaScript.
 
-![GitHub release (latest by date)](https://img.shields.io/github/v/release/barandev/Firebase-Authentication-Template?style=for-the-badge)
-![GitHub License](https://img.shields.io/github/license/barandev/Firebase-Authentication-Template?style=for-the-badge)
-![GitHub last commit](https://img.shields.io/github/last-commit/barandev/Firebase-Authentication-Template?style=for-the-badge)
-
 ## How the auth flow works
 
 Here's what happens step by step when a user signs in:
