@@ -1,5 +1,5 @@
 # Firebase Authentication Template
-
+![1771458205236](image/README/1771458205236.png)
 A Flask + vanilla JS template for adding user sign-up, sign-in, and session management to a web app using Firebase Auth. No frameworks, no build tools. Just HTML, CSS, and JavaScript.
 
 ## How the auth flow works
